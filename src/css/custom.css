@@ -1,0 +1,94 @@
+/* UTILS */
+.text-dark {
+	color: #aaa;
+}
+
+.container {
+	width: 100%;
+	padding: 10px;
+}
+
+.wrapper {
+	min-height: 100vh;
+	width: 100%;
+}
+
+.full-height {
+	height: 100vh;
+}
+
+/* LOGIN */
+.login {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.login-form {
+	width: 600px;
+}
+
+/* DASHBOARD */
+.dashboard {
+	display: flex;
+}
+
+.dashboard__sidebar {
+	width: 160px;
+	background-color: #0c1425;
+}
+
+.dashboard__overview {
+	margin: auto;
+	max-width: 1800px;
+	display: grid;
+	grid-gap: 25px;
+}
+
+.dashboard__overview_graph {
+	height: 200px;
+
+	background-color: #0a1221;
+	position: relative;
+}
+
+.dashboard__overview_graph .graph {
+	padding: 10px;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+}
+
+.dashboard__overview_graph canvas {
+	height: 100% !important;
+	width: 100% !important;
+}
+
+.dashboard__card-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	grid-gap: 25px;
+}
+
+.dashboard__card {
+	height: 100px;
+	background-color: #0a1221;
+}
+
+.dashboard__trace {
+	height: 300px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+	grid-gap: 25px;
+}
+
+.App {
+	background-color: #04070e;
+}
+
+.bottom {
+	background-color: #0a1221;
+}
