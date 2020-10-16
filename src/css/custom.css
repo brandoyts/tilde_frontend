@@ -1,6 +1,27 @@
 /* UTILS */
-.text-dark {
-	color: #aaa;
+.text-medium {
+	color: rgba(255, 255, 255, 0.6);
+}
+
+.react_calendar_tile--active {
+	background-color: orange;
+}
+
+.circular-total {
+	font-weight: bold;
+	margin: 0 auto;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 130px;
+	height: 130px;
+	border: 7px solid #6e86ff;
+	border-radius: 50%;
+}
+
+.circular-total p {
+	font-size: 24px;
 }
 
 .container {
@@ -15,6 +36,12 @@
 
 .full-height {
 	height: 100vh;
+}
+
+canvas {
+	height: 100% !important;
+	width: 100% !important;
+	border-radius: 8px;
 }
 
 /* LOGIN */
@@ -35,7 +62,8 @@
 
 .dashboard__sidebar {
 	width: 160px;
-	background-color: #0c1425;
+	/* background-color: #0c1425; */
+	background-color: #1c1e25;
 }
 
 .dashboard__overview {
@@ -48,7 +76,8 @@
 .dashboard__overview_graph {
 	height: 200px;
 
-	background-color: #0a1221;
+	/* background-color: #0a1221; */
+	background-color: #1c1e25;
 	position: relative;
 }
 
@@ -62,11 +91,6 @@
 	width: 100%;
 }
 
-.dashboard__overview_graph canvas {
-	height: 100% !important;
-	width: 100% !important;
-}
-
 .dashboard__card-container {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -74,8 +98,10 @@
 }
 
 .dashboard__card {
-	height: 100px;
-	background-color: #0a1221;
+	padding: 20px;
+	height: 200px;
+	/* background-color: #0a1221; */
+	background-color: #1c1e25;
 }
 
 .dashboard__trace {
@@ -85,10 +111,29 @@
 	grid-gap: 25px;
 }
 
+.dashboard__trace .bottom {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.dashboard__trace .bottom div {
+	position: static !important;
+	top: 0 !important;
+	right: 0 !important;
+	bottom: 0 !important;
+	left: 0 !important;
+	height: 100% !important;
+	width: 100% !important;
+	overflow: hidden;
+	margin: 0 !important;
+}
+
 .App {
-	background-color: #04070e;
+	/* background-color: #04070e; */
+	background-color: #15171e;
 }
 
 .bottom {
-	background-color: #0a1221;
+	background-color: #1c1e25;
 }

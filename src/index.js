@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "./css/custom.css";
+import "mapbox-gl/dist/mapbox-gl.css";
 import { ThemeProvider, CSSReset } from "@chakra-ui/core";
 
 const Index = ({ children }) => {

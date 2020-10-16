@@ -1,67 +1,34 @@
 import React from "react";
-import { Line } from "react-chartjs-2";
-
-const graphData = {
-	labels: [
-		"02:00",
-		"04:00",
-		"06:00",
-		"08:00",
-		"10:00",
-		"12:00",
-		"14:00",
-		"16:00",
-		"18:00",
-		"20:00",
-		"22:00",
-		"00:00",
-	],
-	datasets: [
-		{
-			fillColor: "red",
-			borderColor: "#80b6f4",
-			pointBorderColor: "#80b6f4",
-			pointBackgroundColor: "#80b6f4",
-			pointHoverBackgroundColor: "#80b6f4",
-			pointHoverBorderColor: "#80b6f4",
-			pointBorderWidth: 10,
-			pointHoverRadius: 10,
-			pointHoverBorderWidth: 1,
-			pointRadius: 3,
-			fill: false,
-			borderWidth: 4,
-			label: "Guests",
-			data: [
-				25.0,
-				32.4,
-				22.2,
-				39.4,
-				34.2,
-				22.0,
-				23.2,
-				24.1,
-				20.0,
-				18.4,
-				19.1,
-				17.4,
-			],
-		},
-	],
-};
+import { Line, Pie } from "react-chartjs-2";
 
 const graphOptions = {
 	maintainAspectRatio: false,
-	scales: {
-		yAxes: [
-			{
-				stacked: true,
-			},
-		],
-	},
 };
 
-function Graph() {
-	console.log("object");
+export function LineGraph() {
+	const graphData = {
+		labels: ["Morning", "Afternoon", "Evening"],
+		datasets: [
+			{
+				spanGaps: true,
+				backgroundColor: "#6E87FF",
+				borderColor: "#6E87FF",
+				pointBorderColor: "#6E87FF",
+				pointBackgroundColor: "#6E87FF",
+				pointHoverBackgroundColor: "#6E87FF",
+				pointHoverBorderColor: "#6E87FF",
+				pointBorderWidth: 10,
+				pointHoverRadius: 10,
+				pointHoverBorderWidth: 1,
+				pointRadius: 3,
+				fill: true,
+				borderWidth: 4,
+				label: "Guests",
+				data: [25.0, 32.4, 550],
+			},
+		],
+	};
+
 	return (
 		<div className="graph">
 			<Line data={graphData} options={graphOptions} />
@@ -69,4 +36,21 @@ function Graph() {
 	);
 }
 
-export default Graph;
+export function PieGraph() {
+	const pieData = {
+		labels: ["Morning", "Afternoon", "Evening"],
+		datasets: [
+			{
+				fill: true,
+				borderColor: "none",
+				borderWidth: 1,
+				backgroundColor: ["#AD7CFF", "#6F86FF", "#51B94F"],
+				hoverBorderColor: ["#AD7CFF", "#6F86FF", "#51B94F"],
+				borderColor: "rgba(255, 255, 255 0.6",
+				data: [352, 102, 550],
+			},
+		],
+	};
+
+	return <Pie data={pieData} options={graphOptions} />;
+}

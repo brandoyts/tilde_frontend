@@ -4,7 +4,7 @@ import Navbar from "../../Navbar";
 
 function Dashboard() {
 	return (
-		<div className="dashboard wrapper">
+		<div className="dashboard wrapper text-medium">
 			<Navbar />
 			<div className="dashboard__main-content container">
 				<Overview />

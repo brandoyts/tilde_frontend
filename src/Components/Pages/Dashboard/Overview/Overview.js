@@ -1,32 +1,39 @@
 import React from "react";
 import { Box } from "@chakra-ui/core";
-import Graph from "./Graph";
-
+import { LineGraph, PieGraph } from "./Graph";
+import Map from "../../../Map";
+import CirculatTotal from "../../../CircularTotal";
+import Calendar_ from "../../../Calendar_";
+import Table from "./Table";
 function Overview() {
 	return (
 		<div className="dashboard__overview">
 			{/* graph */}
 			<Box rounded="md" className="dashboard__overview_graph">
-				<Graph/>
+				<LineGraph />
 			</Box>
 
 			{/* visitor card count */}
 			<div className="dashboard__card-container">
 				<Box rounded="lg" className="dashboard__card">
-					Today
+					<PieGraph />
 				</Box>
 				<Box rounded="lg" className="dashboard__card">
-					This week
+					<CirculatTotal total={500} />
 				</Box>
 				<Box rounded="lg" className="dashboard__card">
-					This month
+					<Calendar_ />
 				</Box>
 			</div>
 
 			{/* map & guest table */}
 			<div className="dashboard__trace">
-				<Box rounded="lg" className="bottom">Map</Box>
-				<Box rounded="lg" className="bottom">Table</Box>
+				<Box rounded="lg" className="bottom">
+					<Map />
+				</Box>
+				<Box rounded="lg" className="bottom">
+					table
+				</Box>
 			</div>
 		</div>
 	);
