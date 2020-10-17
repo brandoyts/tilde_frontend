@@ -1,7 +1,5 @@
 import React from "react";
 import { MDBDataTable } from "mdbreact";
-// import "mdbreact/dist/css/mdb-free.css";
-// import "./assets/scss/mdb-free.scss";
 
 const DatatablePage = () => {
 	const data = {
@@ -503,7 +501,7 @@ const DatatablePage = () => {
 		],
 	};
 
-	return <MDBDataTable striped bordered small data={data} />;
+	return <MDBDataTable striped bordered hover data={data} />;
 };
 
 export default DatatablePage;

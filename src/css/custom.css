@@ -1,4 +1,8 @@
 /* UTILS */
+* {
+	text-decoration: none !important;
+}
+
 .text-medium {
 	color: rgba(255, 255, 255, 0.6);
 }
@@ -18,6 +22,10 @@
 	height: 130px;
 	border: 7px solid #6e86ff;
 	border-radius: 50%;
+}
+
+.grid-item {
+	background-color: #1c1e25;
 }
 
 .circular-total p {
@@ -59,29 +67,31 @@ canvas {
 .dashboard {
 	display: flex;
 }
-
 .dashboard__sidebar {
 	width: 160px;
 	/* background-color: #0c1425; */
 	background-color: #1c1e25;
 }
 
+/* DASHBOARD OVERVIEW*/
 .dashboard__overview {
 	margin: auto;
 	max-width: 1800px;
-	display: grid;
-	grid-gap: 25px;
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
 }
 
-.dashboard__overview_graph {
-	height: 200px;
+.dashboard__overview .pie-graph {
+	height: 100px;
+}
 
-	/* background-color: #0a1221; */
+.dashboard__overview__line-graph {
+	height: 200px;
 	background-color: #1c1e25;
 	position: relative;
 }
-
-.dashboard__overview_graph .graph {
+.dashboard__overview__line-graph .graph {
 	padding: 10px;
 	position: absolute;
 	top: 0;
@@ -91,33 +101,37 @@ canvas {
 	width: 100%;
 }
 
-.dashboard__card-container {
+/* MIDDLE */
+.dashboard__overview__middle {
 	display: grid;
+	gap: 25px;
 	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-	grid-gap: 25px;
 }
 
-.dashboard__card {
-	padding: 20px;
-	height: 200px;
-	/* background-color: #0a1221; */
-	background-color: #1c1e25;
-}
-
-.dashboard__trace {
-	height: 300px;
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-	grid-gap: 25px;
-}
-
-.dashboard__trace .bottom {
-	position: relative;
+.middle-item {
+	height: 100%;
 	width: 100%;
+}
+
+.dashboard_overview__pie-graph {
+	grid-area: pie-graph;
+	width: 100%;
+	height: 150px;
+}
+
+/* BOTTOM */
+.dashboard__overview__bottom {
+	display: grid;
+	gap: 25px;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.dashboard__overview__map {
+	position: relative;
 	height: 100%;
 }
 
-.dashboard__trace .bottom div {
+.dashboard__overview__map div {
 	position: static !important;
 	top: 0 !important;
 	right: 0 !important;
@@ -129,11 +143,16 @@ canvas {
 	margin: 0 !important;
 }
 
-.App {
-	/* background-color: #04070e; */
-	background-color: #15171e;
+.dashboard__trace__guest-list {
+	overflow-y: scroll;
+	height: 200px;
 }
 
-.bottom {
-	background-color: #1c1e25;
+.App {
+	background-color: #15171e;
+	/* overflow: hidden; */
+}
+
+.pie-graph {
+	width: 100px;
 }

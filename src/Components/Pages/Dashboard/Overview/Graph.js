@@ -7,10 +7,27 @@ const graphOptions = {
 
 export function LineGraph() {
 	const graphData = {
-		labels: ["Morning", "Afternoon", "Evening"],
+		labels: [
+			"Morning",
+			"Afternoon",
+			"Evening",
+			"test",
+			"Test",
+			"tes",
+			"Morning",
+			"Afternoon",
+			"Evening",
+			"test",
+			"Test",
+			"tes",
+			"test",
+			"test",
+			"test",
+			"test",
+		],
 		datasets: [
 			{
-				spanGaps: true,
+				// spanGaps: true,
 				backgroundColor: "#6E87FF",
 				borderColor: "#6E87FF",
 				pointBorderColor: "#6E87FF",
@@ -21,10 +38,27 @@ export function LineGraph() {
 				pointHoverRadius: 10,
 				pointHoverBorderWidth: 1,
 				pointRadius: 3,
-				fill: true,
+				fill: false,
 				borderWidth: 4,
 				label: "Guests",
-				data: [25.0, 32.4, 550],
+				data: [
+					25,
+					32,
+					550,
+					553,
+					302,
+					312,
+					32,
+					52,
+					102,
+					302,
+					553,
+					619,
+					901,
+					1023,
+					3324,
+					321,
+				],
 			},
 		],
 	};
@@ -52,5 +86,5 @@ export function PieGraph() {
 		],
 	};
 
-	return <Pie data={pieData} options={graphOptions} />;
+	return <Pie className="pie-graph" data={pieData} options={graphOptions} />;
 }

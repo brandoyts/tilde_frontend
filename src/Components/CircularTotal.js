@@ -1,9 +1,10 @@
 import React from "react";
+import "../css/circular-total.css";
 
 function CircularTotal({ total }) {
 	return (
 		<div className="circular-total">
-			<h1>{total}</h1>
+			<p>{total}</p>
 		</div>
 	);
 }

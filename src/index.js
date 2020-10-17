@@ -3,17 +3,19 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import "./css/custom.css";
+import { BrowserRouter as Router } from "react-router-dom";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { ThemeProvider, CSSReset } from "@chakra-ui/core";
 
 const Index = ({ children }) => {
 	return (
 		<div className="Index">
-			<ThemeProvider>
-				<CSSReset />
-				{children}
-			</ThemeProvider>
+			<Router>
+				<ThemeProvider>
+					<CSSReset />
+					{children}
+				</ThemeProvider>
+			</Router>
 		</div>
 	);
 };
