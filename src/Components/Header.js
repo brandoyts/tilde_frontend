@@ -1,9 +1,9 @@
 import React from "react";
 import { GrMenu } from "react-icons/gr";
 import { IconButton } from "@chakra-ui/core";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-function Header() {
+function Header({ username, logout }) {
 	return (
 		<header className="dashboard__header">
 			<div className="container">
@@ -20,15 +20,14 @@ function Header() {
 						activeClassName="dashboard__header__active-link"
 						to="/account"
 					>
-						ACCOUNT
+						{username}
 					</NavLink>
-					<NavLink
+					<button
+						onClick={logout}
 						className="dashboard__header__link"
-						activeClassName="dashboard__header__active-link"
-						to="/logout"
 					>
 						LOGOUT
-					</NavLink>
+					</button>
 				</nav>
 			</div>
 		</header>

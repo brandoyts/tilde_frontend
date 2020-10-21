@@ -76,7 +76,7 @@ export function PieGraph() {
 		datasets: [
 			{
 				fill: true,
-				borderColor: "none",
+				// borderColor: "none",
 				borderWidth: 1,
 				backgroundColor: ["#AD7CFF", "#6F86FF", "#51B94F"],
 				hoverBorderColor: ["#AD7CFF", "#6F86FF", "#51B94F"],

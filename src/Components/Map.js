@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import MapGL, { GeolocateControl } from "react-map-gl";
+import MapGL from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 const TOKEN = process.env.REACT_APP_TOKEN;
@@ -16,7 +16,7 @@ function Map() {
 	const handleViewportChange = (viewport) => {
 		setViewPort({ ...viewport, transitionDuration: 1000 });
 	};
-	console.log("object");
+
 	return (
 		<MapGL
 			{...viewport}

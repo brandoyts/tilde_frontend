@@ -9,7 +9,9 @@ function Trace() {
 			<div className="trace__top">
 				<Map />
 			</div>
-			<div className="trace__bottom">{/* <Table /> */}</div>
+			<div className="trace__bottom">
+				<Table />
+			</div>
 		</div>
 	);
 }
