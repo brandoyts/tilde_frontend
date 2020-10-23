@@ -1,18 +1,20 @@
 import React from "react";
-import guests from "../../../../data/guests.json";
+// import guests from "../../../../data/guests.json";
 
-function GuestList() {
+function GuestList({ guests }) {
 	return (
 		<ul>
-			{guests.map((guest) => {
-				return (
-					<li key={guest.id}>
-						<p>
-							{guest.name} <small>{guest.time}</small>
-						</p>
-					</li>
-				);
-			})}
+			{guests &&
+				guests.map((guest) => {
+					return (
+						<li key={`${guest.UserId}-${guest.UserId}`}>
+							<p>
+								{guest.firstname} {guest.lastname}
+								<small>{guest.createdAt}</small>
+							</p>
+						</li>
+					);
+				})}
 		</ul>
 	);
 }

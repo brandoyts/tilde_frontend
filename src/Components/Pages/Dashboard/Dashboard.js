@@ -16,7 +16,7 @@ function Dashboard({ children }) {
 
 	return (
 		<div className="dashboard">
-			<Header />
+			<Header logout={handleLogout} />
 			<div className="dashboard__content container">
 				{/* sidebar */}
 				<Sidebar />

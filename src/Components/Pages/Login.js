@@ -61,8 +61,6 @@ function Login() {
 			});
 	};
 
-	// if (state.user) return <Redirect to="/" />;
-
 	return (
 		<Flex align="center" justify="center" className="login wrapper">
 			<Box className="login-form" maxWidth={500} p={4}>
@@ -112,7 +110,7 @@ function Login() {
 						focusBorderColor={null}
 						variantColor="teal"
 						outline="red"
-						lodaingText="Authenticating"
+						loadingText="Authenticating"
 						isLoading={state.authLoading}
 					>
 						Login
