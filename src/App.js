@@ -5,7 +5,6 @@ import {
 	Route,
 	Redirect,
 } from "react-router-dom";
-import axios from "axios";
 import { AuthContext } from "./store/Auth/AuthProvider";
 import Login from "./Components/Pages/Login";
 import Dashboard from "./Components/Pages/Dashboard/Dashboard";

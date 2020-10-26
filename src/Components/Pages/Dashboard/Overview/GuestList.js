@@ -8,10 +8,10 @@ function GuestList({ guests }) {
 				guests.map((guest) => {
 					return (
 						<li key={`${guest.UserId}-${guest.UserId}`}>
-							<p>
-								{guest.firstname} {guest.lastname}
-								<small>{guest.createdAt}</small>
-							</p>
+							<small>
+								{guest.firstname} {guest.lastname} -{" "}
+								{guest.createdAt}
+							</small>
 						</li>
 					);
 				})}
