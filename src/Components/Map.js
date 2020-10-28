@@ -6,7 +6,7 @@ import { IconButton } from "@chakra-ui/core";
 
 const TOKEN = process.env.REACT_APP_TOKEN;
 
-function Map({ guestData }) {
+function Map({ guestsData }) {
   const [selectedPin, setSelectedPin] = useState(null);
   const [viewport, setViewPort] = useState({
     width: "100%",
@@ -36,8 +36,8 @@ function Map({ guestData }) {
       mapStyle="mapbox://styles/brandoyts/ckgcdxu4f2i7g19ph4k2fsk6s"
       onViewportChange={handleViewportChange}
     >
-      {guestData &&
-        guestData.map((guest) => {
+      {guestsData &&
+        guestsData.map((guest) => {
           return (
             <Marker key={guest.id} latitude={guest.lat} longitude={guest.lon}>
               <IconButton

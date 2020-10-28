@@ -84,9 +84,9 @@ function Overview() {
       </div>
 
       <div className="overview__bottom">
-        <div className="overview__map">
+        <div className="overview__map map">
           <LoadingContent hasData={overviewData}>
-            <Map guestData={overviewData && overviewData.guestsData} />
+            <Map guestsData={overviewData && overviewData.guestsData} />
           </LoadingContent>
         </div>
 
