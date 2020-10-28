@@ -1,12 +1,12 @@
 .circular-total {
-	font-weight: bold;
-	margin: 0 auto;
-	text-align: center;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 130px;
-	height: 130px;
-	border: 7px solid #6e86ff;
-	border-radius: 50%;
+  font-weight: bold;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  height: 130px;
+  border: 7px solid #6e86ff;
+  border-radius: 50%;
 }

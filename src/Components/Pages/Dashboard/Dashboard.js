@@ -7,25 +7,25 @@ import { AuthContext } from "../../../store/Auth/AuthProvider";
 import { AUTH_LOGOUT } from "../../../store/action_types.js";
 
 function Dashboard({ children }) {
-	const { state, dispatch } = useContext(AuthContext);
+  const { state, dispatch } = useContext(AuthContext);
 
-	const handleLogout = () => {
-		dispatch({ type: AUTH_LOGOUT });
-		return <Redirect to="/login" />;
-	};
+  const handleLogout = () => {
+    dispatch({ type: AUTH_LOGOUT });
+    return <Redirect to="/login" />;
+  };
 
-	return (
-		<div className="dashboard">
-			<Header logout={handleLogout} />
-			<div className="dashboard__content container">
-				{/* sidebar */}
-				<Sidebar />
+  return (
+    <div className="dashboard">
+      <Header displayName={state.user} logout={handleLogout} />
+      <div className="dashboard__content container">
+        {/* sidebar */}
+        <Sidebar />
 
-				{/* main content */}
-				<main className="dashboard__main-content">{children}</main>
-			</div>
-		</div>
-	);
+        {/* main content */}
+        <main className="dashboard__main-content">{children}</main>
+      </div>
+    </div>
+  );
 }
 
 export default Dashboard;

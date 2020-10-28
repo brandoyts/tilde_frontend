@@ -1,125 +1,120 @@
 import React, { useState, useContext } from "react";
-import { Redirect, useHistory } from "react-router-dom";
 import axios from "axios";
 import {
-	Flex,
-	Box,
-	Stack,
-	InputGroup,
-	InputLeftAddon,
-	Input,
-	Icon,
-	Button,
-	Text,
+  Flex,
+  Box,
+  Stack,
+  InputGroup,
+  InputLeftAddon,
+  Input,
+  Icon,
+  Button,
+  Text,
 } from "@chakra-ui/core";
 import { AuthContext } from "../../store/Auth/AuthProvider";
 import { AUTH_LOGIN, AUTH_FETCH, AUTH_FAIL } from "../../store/action_types.js";
 
 function Login() {
-	const [error, setError] = useState(null);
-	const [inputValues, setInputValues] = useState({
-		username: "",
-		password: "",
-	});
+  const [error, setError] = useState(null);
+  const [inputValues, setInputValues] = useState({
+    username: "",
+    password: "",
+  });
 
-	const history = useHistory();
-	const { state, dispatch } = useContext(AuthContext);
+  console.log(new Date().toString());
 
-	const handleChange = (e) => {
-		const key = e.target.id;
-		const value = e.target.value;
+  const { state, dispatch } = useContext(AuthContext);
 
-		setInputValues({
-			...inputValues,
-			[key]: value,
-		});
-	};
+  const handleChange = (e) => {
+    const key = e.target.id;
+    const value = e.target.value;
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
+    setInputValues({
+      ...inputValues,
+      [key]: value,
+    });
+  };
 
-		if (inputValues.username === "" || inputValues.password === "") return;
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-		dispatch({ type: AUTH_FETCH });
+    if (inputValues.username === "" || inputValues.password === "") return;
 
-		const user = {
-			username: inputValues.username,
-			password: inputValues.password,
-		};
+    dispatch({ type: AUTH_FETCH });
 
-		axios
-			.post("http://localhost:8000/api/v1/authenticate/login", user)
-			.then((res) => {
-				console.log(res);
-				const token = res.headers.authorization;
-				const user = res.data.user;
-				dispatch({ type: AUTH_LOGIN, payload: { token, user } });
-				history.push("/");
-			})
-			.catch((err) => {
-				setError(err.response.data.error);
-				dispatch({ type: AUTH_FAIL });
-			});
-	};
+    const user = {
+      username: inputValues.username,
+      password: inputValues.password,
+    };
 
-	return (
-		<Flex align="center" justify="center" className="login wrapper">
-			<Box className="login-form" maxWidth={500} p={4}>
-				<Stack spacing={4}>
-					<Text
-						as="h3"
-						textAlign="center"
-						fontSize={32}
-						paddingBottom={5}
-					>
-						`Tilde`
-					</Text>
+    axios
+      .post("http://localhost:8000/api/v1/authenticate/login", user)
+      .then((res) => {
+        console.log("test");
+        console.log(res);
+        const token = res.headers.authorization;
+        const user = res.data.user;
+        dispatch({ type: AUTH_LOGIN, payload: { token, user } });
+      })
+      .catch((err) => {
+        setError(err.response.data.error);
+        dispatch({ type: AUTH_FAIL });
+      });
+  };
 
-					{error && (
-						<Text as="p" color="red.500" textAlign="center">
-							{error}
-						</Text>
-					)}
-					<InputGroup size="md">
-						<InputLeftAddon children={<Icon name="lock" />} />
-						<Input
-							id="username"
-							onChange={handleChange}
-							focusBorderColor="teal.500"
-							type="text"
-							roundedLeft="0"
-							placeholder="Username..."
-							value={inputValues.username}
-						/>
-					</InputGroup>
+  return (
+    <Flex align="center" justify="center" className="login wrapper">
+      <Box className="login-form" maxWidth={500} p={4}>
+        <Stack spacing={4}>
+          <Text as="h3" textAlign="center" fontSize={32} paddingBottom={5}>
+            `Tilde`
+          </Text>
 
-					<InputGroup size="md">
-						<InputLeftAddon children={<Icon name="lock" />} />
-						<Input
-							id="password"
-							onChange={handleChange}
-							focusBorderColor="teal.500"
-							type="password"
-							roundedLeft="0"
-							placeholder="Password..."
-							value={inputValues.password}
-						/>
-					</InputGroup>
+          {error && (
+            <Text as="p" color="red.500" textAlign="center">
+              {error}
+            </Text>
+          )}
+          <InputGroup size="md">
+            <InputLeftAddon children={<Icon name="lock" />} />
+            <Input
+              id="username"
+              onChange={handleChange}
+              focusBorderColor="teal.500"
+              type="text"
+              roundedLeft="0"
+              placeholder="Username..."
+              value={inputValues.username}
+            />
+          </InputGroup>
 
-					<Button
-						onClick={handleSubmit}
-						focusBorderColor={null}
-						variantColor="teal"
-						outline="red"
-						loadingText="Authenticating"
-						isLoading={state.authLoading}
-					>
-						Login
-					</Button>
-				</Stack>
-			</Box>
-		</Flex>
-	);
+          <InputGroup size="md">
+            <InputLeftAddon children={<Icon name="lock" />} />
+            <Input
+              id="password"
+              onChange={handleChange}
+              focusBorderColor="teal.500"
+              type="password"
+              roundedLeft="0"
+              placeholder="Password..."
+              value={inputValues.password}
+            />
+          </InputGroup>
+
+          <Button
+            onClick={handleSubmit}
+            focusBorderColor={null}
+            variantColor="teal"
+            outline="red"
+            loadingText="Authenticating"
+            isLoading={state.authLoading}
+          >
+            Login
+          </Button>
+        </Stack>
+      </Box>
+    </Flex>
+  );
 }
 
 export default Login;
