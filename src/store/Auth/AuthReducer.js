@@ -1,20 +1,13 @@
 import Cookies from "js-cookie";
-
 import {
-  REMEMBER_LOGIN,
   AUTH_LOGIN,
   AUTH_LOGOUT,
   AUTH_FETCH,
   AUTH_FAIL,
 } from "../action_types.js";
-import {
-  localstorageRemove,
-  localstorageSet,
-} from "../.././helpers/localstorage";
 
 const AuthReducer = (state, action) => {
   switch (action.type) {
-    // case REMEMBER_LOGIN:
     case AUTH_LOGIN:
       Cookies.set("auth", action.payload.token);
       Cookies.set("user", action.payload.user);

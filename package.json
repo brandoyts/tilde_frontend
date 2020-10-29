@@ -25,6 +25,7 @@
     "react-dom": "^16.13.1",
     "react-icons": "^3.11.0",
     "react-map-gl": "^5.2.9",
+    "react-mapbox-gl": "^5.0.0",
     "react-material-ui-datatable": "^2.0.0-alpha.30",
     "react-scripts": "3.4.3"
   },

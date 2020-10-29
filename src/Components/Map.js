@@ -1,24 +1,29 @@
-import React, { useState } from "react";
-import MapGL, { Marker, Popup } from "react-map-gl";
+import React, { useState, useEffect } from "react";
+import ReactMapboxGl, { Feature, Layer, Popup } from "react-mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { FaMapPin } from "react-icons/fa";
-import { IconButton } from "@chakra-ui/core";
 
 const TOKEN = process.env.REACT_APP_TOKEN;
 
+const Mapbox = ReactMapboxGl({
+  accessToken: TOKEN,
+});
+
+const mapOptions = {
+  style: "mapbox://styles/brandoyts/ckgcdxu4f2i7g19ph4k2fsk6s",
+  center: {
+    lon: 121.043861,
+    lat: 14.676208,
+  },
+
+  containerStyle: {
+    height: "100%",
+    width: "100%",
+  },
+  renderChildrenInPortal: true,
+};
+
 function Map({ guestsData }) {
   const [selectedPin, setSelectedPin] = useState(null);
-  const [viewport, setViewPort] = useState({
-    width: "100%",
-    height: "100%",
-    latitude: 14.676208,
-    longitude: 121.043861,
-    zoom: 8,
-  });
-
-  const handleViewportChange = (viewport) => {
-    setViewPort({ ...viewport, transitionDuration: 1000 });
-  };
 
   const handleSelect = (guest) => {
     setSelectedPin(guest);
@@ -28,47 +33,47 @@ function Map({ guestsData }) {
     setSelectedPin(null);
   };
 
-  console.log("map");
+  useEffect(() => {
+    return () => {
+      setSelectedPin(null);
+    };
+  });
 
   return (
-    <MapGL
-      {...viewport}
-      mapboxApiAccessToken={TOKEN}
-      mapStyle="mapbox://styles/brandoyts/ckgcdxu4f2i7g19ph4k2fsk6s"
-      onViewportChange={handleViewportChange}
-    >
-      {guestsData &&
-        guestsData.map((guest) => {
-          return (
-            <Marker key={guest.id} latitude={guest.lat} longitude={guest.lon}>
-              <IconButton
+    <Mapbox {...mapOptions}>
+      <Layer
+        id="marker"
+        type="circle"
+        paint={{
+          "circle-color": "#ff5200",
+          "circle-stroke-width": 2,
+          "circle-stroke-color": "#fff",
+          "circle-stroke-opacity": 1,
+        }}
+      >
+        {guestsData &&
+          guestsData.map((guest) => {
+            console.log(guest);
+            return (
+              <Feature
+                key={guest.id}
+                coordinates={[guest.lon, guest.lat]}
                 onClick={() => handleSelect(guest)}
-                variant="solid"
-                isRound={true}
-                size="xs"
-                variantColor="orange"
-                aria-label="Call Sage"
-                fontSize="12px"
-                icon={FaMapPin}
               />
-            </Marker>
-          );
-        })}
-
+            );
+          })}
+      </Layer>
       {selectedPin && (
         <Popup
-          latitude={selectedPin.lat}
-          longitude={selectedPin.lon}
-          onClose={handleClosePopup}
+          coordinates={[selectedPin.lon, selectedPin.lat]}
+          onClick={handleClosePopup}
         >
-          <div>
-            <p>Name: {`${selectedPin.firstname} ${selectedPin.lastname}`}</p>
-            <p>Address: {selectedPin.address}</p>
-            <p>Time Visited: {selectedPin.createdAt}</p>
-          </div>
+          <p>Name: {`${selectedPin.firstname} ${selectedPin.lastname}`}</p>
+          <p>Address: {selectedPin.address}</p>
+          <p>Time Visited: {selectedPin.createdAt}</p>
         </Popup>
       )}
-    </MapGL>
+    </Mapbox>
   );
 }
 

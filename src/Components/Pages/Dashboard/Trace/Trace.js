@@ -26,16 +26,14 @@ function Trace({ guestData }) {
       }
     };
 
-    // RUN ON FIRST RENDER
     fetchData(state.token);
 
-    // const updateData = setInterval(() => fetchData(state.token), 3000);
     return () => {
-      //   clearInterval(updateData);
       setTraceData(null);
     };
   }, []);
 
+  console.log("trace");
   console.log(traceData);
 
   return (

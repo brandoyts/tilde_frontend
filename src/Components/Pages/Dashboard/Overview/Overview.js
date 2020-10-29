@@ -34,21 +34,17 @@ function Overview() {
         const { data } = response;
 
         setOverviewData(data);
-        // setLoading(false);
       } catch (error) {
         console.log(error);
       }
     };
-
-    // RUN ON FIRST RENDER
-    fetchData(state.token);
 
     const updateData = setInterval(() => fetchData(state.token), 3000);
     return () => {
       clearInterval(updateData);
       setOverviewData(null);
     };
-  }, []);
+  }, [state]);
 
   return (
     <div className="overview">

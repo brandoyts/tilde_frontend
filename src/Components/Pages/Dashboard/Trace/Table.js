@@ -102,17 +102,20 @@ const options = {
       reset: "RESET",
     },
   },
-  rowsPerPageOptions: false,
+
+  rowsPerPageOptions: [null],
   rowsPerPage: 5,
   selectableRows: false,
   pagination: true,
-  responsive: "scroll",
+  responsive: "standard",
   filter: false,
+  selectableRows: "none",
+  selectableRowsOnClick: true,
 };
 
 function Table({ guestsData }) {
   const data = [];
-  console.log(guestsData);
+
   if (guestsData) {
     for (let guest of guestsData) {
       const dataObj = {
