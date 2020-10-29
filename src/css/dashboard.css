@@ -3,12 +3,19 @@
 /* utils */
 .container {
   margin: 0 auto;
-  max-width: 1400px;
+  max-width: 1500px;
   padding: 35px;
 }
 
-.skeleton-loading {
-  /* background-color: var(--) */
+.react-calendar__tile
+  .react-calendar__tile--now
+  .react-calendar__tile--active
+  .react-calendar__tile--range
+  .react-calendar__tile--rangeStart
+  .react-calendar__tile--rangeEnd
+  .react-calendar__tile--rangeBothEnds
+  .react-calendar__month-view__days__day {
+  background-color: "red" !important;
 }
 
 .dashboard-title {
@@ -26,19 +33,19 @@
   /* border-radius: 8px; */
 }
 
-.sidebar-active,
-.sidebar-link:hover {
-  color: var(--active-link-text) !important;
-  background-color: rgba(72, 146, 237, 0.2);
-  border: none;
+.sidebar-active span,
+.sidebar-link:hover span {
+  /* color: var(--active-link-text) !important;
+  background-color: rgba(72, 146, 237, 0.2); */
+  border-right: 3px solid rgba(72, 146, 237, 0.2);
   border-radius: 4px;
   transition: all 0.4s;
 }
 
 .sidebar-link {
   color: var(--text-gray);
-  padding: 12px 15px;
-  width: 207px;
+
+  width: 107px;
   height: 39px;
   display: inline-flex;
   align-items: center;
@@ -76,7 +83,7 @@
   list-style: none;
   justify-content: space-between;
   align-items: center;
-  width: 150px;
+  width: 190px;
   font-weight: bold;
   font-size: 12px;
 }
@@ -103,7 +110,7 @@
   display: flex;
   flex-direction: column;
   position: absolute;
-  left: 0;
+  left: 35px;
   top: 0;
 }
 

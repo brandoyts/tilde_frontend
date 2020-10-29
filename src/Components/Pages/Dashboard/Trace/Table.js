@@ -5,6 +5,16 @@ import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 const getMuiTheme = () =>
   createMuiTheme({
     overrides: {
+      MUIDataTableSearch: {
+        searchIcon: {
+          color: "white",
+        },
+
+        clearIcon: {
+          color: "white",
+        },
+      },
+
       MUIDataTableBodyCell: {
         root: {
           backgroundColor: "#16171c",
@@ -20,6 +30,10 @@ const getMuiTheme = () =>
         fixedHeader: {
           backgroundColor: "#16171c",
           color: "#4892ef",
+
+          "&:selected": {
+            color: "pink",
+          },
         },
       },
 
@@ -39,47 +53,75 @@ const getMuiTheme = () =>
         },
 
         tableCellContainer: {
-          backgroundColor: "#16171c",
+          border: "none",
+        },
+
+        toolbar: {
+          color: "#4892ef",
+        },
+      },
+
+      MuiInput: {
+        input: {
+          color: "white",
+        },
+      },
+
+      MUIDataTableToolbar: {
+        icon: {
+          color: "white",
+
+          // "&:hover": {
+          //   color: "#621ff3",
+          // },
         },
       },
     },
   });
 
 const columns = [
+  { name: "id", label: "ID" },
   { name: "name", label: "Name" },
-  { name: "timeVisited", label: "Time Visited" },
   { name: "address", label: "Address" },
-  { name: "latitude", label: "Latityde" },
+  { name: "latitude", label: "Latitude" },
   { name: "longitude", label: "Longitude" },
+  { name: "timeVisited", label: "Time Visited" },
 ];
 
 const options = {
-  filterType: "checkbox",
-  pagination: {
-    next: "Next Page",
-    previous: "Previous Page",
-    rowsPerPage: 5,
-    displayRows: "of",
-    rowsPerPage: 5,
+  textLabels: {
+    pagination: {
+      next: "Next Page",
+      previous: "Previous Page",
+      displayRows: "of",
+    },
+
+    filter: {
+      all: "asd",
+      title: "FILTERS",
+      reset: "RESET",
+    },
   },
+  rowsPerPageOptions: false,
   rowsPerPage: 5,
+  selectableRows: false,
   pagination: true,
-  responsive: "simple",
+  responsive: "scroll",
+  filter: false,
 };
 
 function Table({ guestsData }) {
-  console.log(guestsData);
-
   const data = [];
-
+  console.log(guestsData);
   if (guestsData) {
     for (let guest of guestsData) {
       const dataObj = {
+        id: guest.id,
         name: `${guest.firstname} ${guest.lastname}`,
-        timeVisited: guest.createdAt,
         address: guest.address,
         latitude: guest.lat,
         longitude: guest.lon,
+        timeVisited: guest.createdAt,
       };
 
       data.push(dataObj);
@@ -89,14 +131,14 @@ function Table({ guestsData }) {
   return (
     <MuiThemeProvider theme={getMuiTheme()}>
       <MUIDataTable
-        title={"Guest Tabular Data"}
-        data={data}
+        title={"Guest Data"}
         columns={columns}
+        data={data}
         options={options}
-        pagination={true}
+        paging={false}
       />
     </MuiThemeProvider>
   );
 }
 
-export default Table;
+export default React.memo(Table);

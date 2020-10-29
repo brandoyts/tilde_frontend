@@ -25,9 +25,10 @@ function Map({ guestsData }) {
   };
 
   const handleClosePopup = (e) => {
-    console.log("object");
     setSelectedPin(null);
   };
+
+  console.log("map");
 
   return (
     <MapGL
@@ -71,4 +72,4 @@ function Map({ guestsData }) {
   );
 }
 
-export default Map;
+export default React.memo(Map);
