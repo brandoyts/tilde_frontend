@@ -1,0 +1,36 @@
+@import "./variables.css";
+
+.container {
+  margin: 0 auto;
+  padding: 10px;
+  max-width: 500px;
+}
+
+.guest-page {
+  width: 100%;
+}
+
+.guest-page__heading {
+  height: auto;
+  text-align: center;
+  color: var(--text-light);
+  background-color: var(--green);
+}
+
+.guest-page__heading h1 {
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.guest-page__heading .text {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 12px;
+  max-width: 500px;
+}
+
+/* .guest-page__guest-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+} */

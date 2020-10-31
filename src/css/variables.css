@@ -2,13 +2,15 @@
   --dark-bg-color: #16171c;
   --gray-bg-color: #1a1b20;
   --text-gray: rgba(255, 255, 255, 0.6);
-  --text-light: #e1e1e1;
+  --text-light: #fff;
   --text-gray: #696c75;
   --primary: #4892ee;
   --secondary: #621ff3;
   --active-link-text: #4892ef;
-  /* --color-satatic:  */
-  /* --color-active: */
+  --dark-bg-color: #1c1d1f;
 
-  --dark-bg-color: #17191b;
+  --green: #425c59;
+  --x2: #a2bfbd;
+  --x3: #fff;
+  --x4: #ffc3a1;
 }

@@ -12,6 +12,7 @@ import { ThemeProvider, CSSReset } from "@chakra-ui/core";
 import Overview from "./Components/Pages/Dashboard/Overview/Overview";
 import Trace from "./Components/Pages/Dashboard/Trace/Trace";
 import Reports from "./Components/Pages/Dashboard/Reports/Reports";
+import GuestPage from "./Components/Pages/Dashboard/Guest";
 
 function App() {
   const { state } = useContext(AuthContext);
@@ -48,6 +49,17 @@ function App() {
               render={() =>
                 state.user && state.token ? (
                   <Dashboard children={<Reports />} />
+                ) : (
+                  <Redirect to="/login" />
+                )
+              }
+            />
+
+            <Route
+              path="/add-guest"
+              render={() =>
+                state.user && state.token ? (
+                  <GuestPage />
                 ) : (
                   <Redirect to="/login" />
                 )

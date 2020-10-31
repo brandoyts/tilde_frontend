@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Header({ displayName, logout }) {
   return (
@@ -7,6 +8,9 @@ function Header({ displayName, logout }) {
         <h1>App Logo</h1>
         <nav>
           <p>Welcome {displayName}!</p>
+          <Link to="/add-guest" className="dashboard__header__link">
+            Guest
+          </Link>
           <button onClick={logout} className="dashboard__header__link">
             LOGOUT
           </button>
