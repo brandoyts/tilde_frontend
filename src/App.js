@@ -61,7 +61,6 @@ function App() {
               }
             />
           </Switch>
-          ;
         </div>
       </ThemeProvider>
     </Router>

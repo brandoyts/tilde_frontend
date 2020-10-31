@@ -1,8 +1,10 @@
 .circular-total {
   font-weight: bold;
   margin: 0 auto;
+  padding: 3px;
   text-align: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 130px;

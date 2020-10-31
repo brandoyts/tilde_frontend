@@ -1,22 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
-import { LineGraph, PieGraph } from "./Graph";
-import { AuthContext } from "../../../../store/Auth/AuthProvider";
 import axios from "axios";
+import { AuthContext } from "../../../../store/Auth/AuthProvider";
+import LineGraph from "../../../Graphs/LineGraph";
+import PieGraph from "../../../Graphs/PieGraph";
 import Map from "../../../Map";
 import CirculatTotal from "../../../CircularTotal";
 import DashboardCalendar from "../../../Calendar_";
 import GuestList from "./GuestList";
-import { Skeleton } from "@chakra-ui/core";
-
-function LoadingContent({ children, hasData }) {
-  return !hasData ? (
-    <Skeleton height="100%" width="100%">
-      {children}
-    </Skeleton>
-  ) : (
-    <>{children}</>
-  );
-}
+import SkeletonWrapper from "../../.././SkeletonWrapper";
 
 function Overview() {
   const [overviewData, setOverviewData] = useState(null);
@@ -39,7 +30,7 @@ function Overview() {
       }
     };
 
-    const updateData = setInterval(() => fetchData(state.token), 3000);
+    const updateData = setInterval(() => fetchData(state.token), 8000);
     return () => {
       clearInterval(updateData);
       setOverviewData(null);
@@ -50,48 +41,52 @@ function Overview() {
     <div className="overview">
       <h1 className="dashboard-title">Daily Overview</h1>
 
-      <div className="overview__top dashboard-item">
-        <LoadingContent hasData={overviewData}>
+      {/* LINE GRAPH */}
+      <section className="dashboard-item overview__top">
+        <SkeletonWrapper data={overviewData}>
           <LineGraph data={overviewData && overviewData.graphicalData[0]} />
-        </LoadingContent>
-      </div>
+        </SkeletonWrapper>
+      </section>
 
       {/* PIE GRAPH */}
-      <div className="overview__middle">
-        <div className="dashboard-item overview__pie-graph">
-          <LoadingContent hasData={overviewData}>
+      <section className="grid-container">
+        <div className="dashboard-item overview__pie-graph ">
+          <SkeletonWrapper data={overviewData}>
             <PieGraph data={overviewData && overviewData.guestsData} />
-          </LoadingContent>
+          </SkeletonWrapper>
         </div>
 
         {/* GUEST COUNT */}
         <div className="dashboard-item overview__guest-count">
-          <LoadingContent hasData={overviewData}>
-            <CirculatTotal total={overviewData && overviewData.totalGuest} />
-          </LoadingContent>
+          <SkeletonWrapper data={overviewData}>
+            <CirculatTotal
+              title="Total Guest"
+              total={overviewData && overviewData.totalGuest}
+            />
+          </SkeletonWrapper>
         </div>
 
         {/* CALENDAR */}
         <div className="dashboard-item overview__calendar">
-          <LoadingContent hasData={overviewData}>
+          <SkeletonWrapper data={overviewData}>
             <DashboardCalendar />
-          </LoadingContent>
+          </SkeletonWrapper>
         </div>
-      </div>
+        {/* </section> */}
 
-      <div className="overview__bottom">
+        {/* <section className="overview__bottom"> */}
         <div className="overview__map map">
-          <LoadingContent hasData={overviewData}>
+          <SkeletonWrapper data={overviewData}>
             <Map guestsData={overviewData && overviewData.guestsData} />
-          </LoadingContent>
+          </SkeletonWrapper>
         </div>
 
-        <div className="overview__guest-list dashboard-item">
-          <LoadingContent hasData={overviewData}>
+        <div className="dashboard-item overview__guest-list">
+          <SkeletonWrapper data={overviewData}>
             <GuestList guests={overviewData && overviewData.guestsData} />
-          </LoadingContent>
+          </SkeletonWrapper>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

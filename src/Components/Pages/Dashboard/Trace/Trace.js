@@ -5,7 +5,7 @@ import Table from "./Table";
 import { Skeleton } from "@chakra-ui/core";
 import { AuthContext } from "../../../../store/Auth/AuthProvider";
 
-function Trace({ guestData }) {
+function Trace() {
   const [traceData, setTraceData] = useState(null);
   const { state } = useContext(AuthContext);
 
@@ -32,9 +32,6 @@ function Trace({ guestData }) {
       setTraceData(null);
     };
   }, []);
-
-  console.log("trace");
-  console.log(traceData);
 
   return (
     <div className="trace">
