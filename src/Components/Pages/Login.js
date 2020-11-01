@@ -50,8 +50,6 @@ function Login() {
     axios
       .post("http://localhost:8000/api/v1/authenticate/login", user)
       .then((res) => {
-        console.log("test");
-        console.log(res);
         const token = res.headers.authorization;
         const user = res.data.user;
         dispatch({ type: AUTH_LOGIN, payload: { token, user } });

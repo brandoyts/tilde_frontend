@@ -1,6 +1,6 @@
 @import "./variables.css";
 
-.container {
+.guest-page .container {
   margin: 0 auto;
   padding: 10px;
   max-width: 500px;
@@ -18,7 +18,7 @@
 }
 
 .guest-page__heading h1 {
-  font-size: 4rem;
+  font-size: calc(1em + 3vw);
   font-weight: bold;
 }
 

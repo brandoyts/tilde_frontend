@@ -66,6 +66,8 @@ function App() {
               }
             />
 
+            {/* <Route path="/add-guest" component={GuestPage} /> */}
+
             <Route
               path="/login"
               render={() =>
