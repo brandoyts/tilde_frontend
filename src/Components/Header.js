@@ -11,9 +11,9 @@ function Header({ displayName, logout }) {
           <Link to="/add-guest" className="dashboard__header__link">
             Guest
           </Link>
-          <button onClick={logout} className="dashboard__header__link">
+          <p onClick={logout} className="dashboard__header__link">
             LOGOUT
-          </button>
+          </p>
         </nav>
       </div>
     </header>

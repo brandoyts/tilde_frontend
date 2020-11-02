@@ -94,6 +94,12 @@ canvas {
   font-size: 12px;
 }
 
+.dashboard__header__link {
+  cursor: pointer;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
 .dashboard__header__active-link,
 .dashboard__header__link:hover {
   color: var(--text-light);
@@ -210,13 +216,13 @@ canvas {
 }
 
 .overview__guest-list ul {
-  /* padding: 10px; */
   list-style: none;
 }
 
-.overview__guest-list ul li p {
+.overview__guest-list ul li {
   display: inline-flex;
   justify-content: space-between;
+  flex-flow: row wrap;
   width: 100%;
 }
 

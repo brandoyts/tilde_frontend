@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../../../../store/Auth/AuthProvider";
 import LineGraph from "../../../Graphs/LineGraph";
-import PieGraph from "../../../Graphs/PieGraph";
+import BarGraph from "../../../Graphs/BarGraph";
 import Map from "../../../Map";
 import CirculatTotal from "../../../CircularTotal";
 import DashboardCalendar from "../../../Calendar_";
@@ -30,7 +30,7 @@ function Overview() {
       }
     };
 
-    const updateData = setInterval(() => fetchData(state.token), 8000);
+    const updateData = setInterval(() => fetchData(state.token), 3000);
     return () => {
       clearInterval(updateData);
       setOverviewData(null);
@@ -52,7 +52,7 @@ function Overview() {
       <section className="grid-container">
         <div className="dashboard-item overview__pie-graph ">
           <SkeletonWrapper data={overviewData}>
-            <PieGraph data={overviewData && overviewData.guestsData} />
+            <BarGraph data={overviewData && overviewData.guestsData} />
           </SkeletonWrapper>
         </div>
 
@@ -77,7 +77,9 @@ function Overview() {
         {/* <section className="overview__bottom"> */}
         <div className="overview__map map">
           <SkeletonWrapper data={overviewData}>
-            <Map guestsData={overviewData && overviewData.guestsData} />
+            {overviewData && (
+              <Map guestsData={overviewData && overviewData.guestsData} />
+            )}
           </SkeletonWrapper>
         </div>
 

@@ -2,7 +2,6 @@ import React, { useState, useContext } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
-import { createMuiTheme } from "@material-ui/core";
 import { AuthContext } from "../../../../store/Auth/AuthProvider";
 import axios from "axios";
 

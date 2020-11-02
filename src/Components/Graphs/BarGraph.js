@@ -1,7 +1,7 @@
 import React from "react";
-import { Pie } from "react-chartjs-2";
+import { Pie, Bar } from "react-chartjs-2";
 
-function PieGraph({ data }) {
+function BarGraph({ data }) {
   let pieData = {};
 
   if (data) {
@@ -33,6 +33,7 @@ function PieGraph({ data }) {
       datasets: [
         {
           fill: true,
+          label: "# of Guests",
           borderWidth: 1,
           backgroundColor: ["#AD7CFF", "#6F86FF", "#51B94F", "orange"],
           hoverBorderColor: ["#AD7CFF", "#6F86FF", "#51B94F", "orange"],
@@ -43,7 +44,23 @@ function PieGraph({ data }) {
     };
   }
 
-  return <Pie data={pieData} options={{ maintainAspectRatio: false }} />;
+  return (
+    <Bar
+      data={pieData}
+      options={{
+        maintainAspectRatio: false,
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+              },
+            },
+          ],
+        },
+      }}
+    />
+  );
 }
 
-export default PieGraph;
+export default BarGraph;

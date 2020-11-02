@@ -1,10 +1,16 @@
 import React from "react";
 import MUIDataTable from "mui-datatables";
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
 const getMuiTheme = () =>
   createMuiTheme({
     overrides: {
+      // MUIDataTable: {
+      //   responsiveScroll: {
+      //     maxHeight: "100px",
+      //   },
+      // },
+
       MUIDataTableSearch: {
         searchIcon: {
           color: "white",
@@ -30,10 +36,6 @@ const getMuiTheme = () =>
         fixedHeader: {
           backgroundColor: "#16171c",
           color: "#4892ef",
-
-          "&:selected": {
-            color: "pink",
-          },
         },
       },
 
@@ -70,10 +72,6 @@ const getMuiTheme = () =>
       MUIDataTableToolbar: {
         icon: {
           color: "white",
-
-          // "&:hover": {
-          //   color: "#621ff3",
-          // },
         },
       },
     },
@@ -94,12 +92,6 @@ const options = {
       next: "Next Page",
       previous: "Previous Page",
       displayRows: "of",
-    },
-
-    filter: {
-      all: "asd",
-      title: "FILTERS",
-      reset: "RESET",
     },
   },
 

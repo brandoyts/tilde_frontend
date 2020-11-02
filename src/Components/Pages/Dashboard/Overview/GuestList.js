@@ -8,8 +8,9 @@ function GuestList({ guests }) {
           return (
             <li key={`${guest.id}`}>
               <small>
-                {guest.firstname} {guest.lastname} - {guest.createdAt}
+                {guest.firstname} {guest.lastname}
               </small>
+              <small>{guest.createdAt}</small>
             </li>
           );
         })}
