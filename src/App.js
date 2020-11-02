@@ -6,7 +6,7 @@ import {
   Route,
 } from "react-router-dom";
 import { AuthContext } from "./store/Auth/AuthProvider";
-import Login from "./Components/Pages/Login";
+import Login from "./Components/Pages/Auth/Login";
 import Dashboard from "./Components/Pages/Dashboard/Dashboard";
 import { ThemeProvider, CSSReset } from "@chakra-ui/core";
 import Overview from "./Components/Pages/Dashboard/Overview/Overview";
